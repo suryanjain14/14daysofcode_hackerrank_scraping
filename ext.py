@@ -14,6 +14,8 @@ driver.find_element_by_xpath(
 driver.find_element_by_xpath("/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[4]/button").click()
 
 pageno=12
+file =open("attn.csv","w")
+file.write("Name,Time\n")
 for page in range(1,pageno+1):
     address='https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/solve-me-first/leaderboard/'+str(page)
     driver.get(url=address)
@@ -29,5 +31,7 @@ for page in range(1,pageno+1):
         finalT = firstT + str(n) + secondT
         name = driver.find_element_by_xpath(finaln).text
         time = driver.find_element_by_xpath(finalT).text
-        print('{0},{1}'.format(name, time))
+        Write=name+","+time+"\n"
+        file.write(Write)
 
+file.close()
