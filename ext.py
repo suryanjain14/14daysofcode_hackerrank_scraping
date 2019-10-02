@@ -12,14 +12,22 @@ driver.find_element_by_xpath(
 driver.find_element_by_xpath(
     '/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[2]/div/div/input').send_keys("nh!234567")
 driver.find_element_by_xpath("/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[4]/button").click()
-driver.get(url='https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/solve-me-first/leaderboard')
 
-driver.implicitly_wait(20)
-driver.find_element_by_xpath('//*[@id="legacy-signup"]/div[1]/p/button').click()
-first='/html/body/div[2]/div[10]/div/div/section/div/div[2]/section/div[2]/div[2]/div['
-second=']/div/div[2]/p/a'
+pageno=12
+for page in range(1,pageno+1):
+    address='https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/solve-me-first/leaderboard/'+str(page)
+    driver.get(url=address)
+    driver.implicitly_wait(8)
+    # driver.implicitly_wait(40)
+    #driver.find_element_by_xpath('//*[@id="legacy-signup"]/div[1]/p/button').click()
+    firstn = '/html/body/div[2]/div[10]/div/div/section/div/div[2]/section/div[2]/div[2]/div['
+    secondn = ']/div/div[2]/p/a'
+    firstT = '/html/body/div[2]/div[10]/div/div/section/div/div[2]/section/div[2]/div[2]/div['
+    secondT = ']/div/div[5]/p'
+    for n in range(1, 11):
+        finaln = firstn + str(n) + secondn
+        finalT = firstT + str(n) + secondT
+        name = driver.find_element_by_xpath(finaln).text
+        time = driver.find_element_by_xpath(finalT).text
+        print('{0},{1}'.format(name, time))
 
-for n in range(1,11):
-    final=first+str(n)+second
-    name = driver.find_element_by_xpath(final).text
-    print(name)
