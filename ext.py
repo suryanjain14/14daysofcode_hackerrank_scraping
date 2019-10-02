@@ -12,26 +12,34 @@ driver.find_element_by_xpath(
 driver.find_element_by_xpath(
     '/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[2]/div/div/input').send_keys("nh!234567")
 driver.find_element_by_xpath("/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[4]/button").click()
+# Enter the no of pages on pagination file
+pageno = 11
 
-pageno=12
-file =open("attn.csv","w")
+#Name the file
+file = open("a-very-big-sum.csv", "w")
 file.write("Name,Time\n")
-for page in range(1,pageno+1):
-    address='https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/solve-me-first/leaderboard/'+str(page)
+for page in range(1, pageno + 1):
+    """Enter the link of contests leaderboard below address field"""
+
+    address = 'https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/a-very-big-sum/leaderboard/' + str(
+        page)
+
+
     driver.get(url=address)
     driver.implicitly_wait(8)
     # driver.implicitly_wait(40)
-    #driver.find_element_by_xpath('//*[@id="legacy-signup"]/div[1]/p/button').click()
+    # driver.find_element_by_xpath('//*[@id="legacy-signup"]/div[1]/p/button').click()
     firstn = '/html/body/div[2]/div[10]/div/div/section/div/div[2]/section/div[2]/div[2]/div['
     secondn = ']/div/div[2]/p/a'
     firstT = '/html/body/div[2]/div[10]/div/div/section/div/div[2]/section/div[2]/div[2]/div['
     secondT = ']/div/div[5]/p'
+
     for n in range(1, 11):
         finaln = firstn + str(n) + secondn
         finalT = firstT + str(n) + secondT
         name = driver.find_element_by_xpath(finaln).text
         time = driver.find_element_by_xpath(finalT).text
-        Write=name+","+time+"\n"
+        Write = name + "," + time + "\n"
         file.write(Write)
 
 file.close()
