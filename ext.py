@@ -13,15 +13,15 @@ driver.find_element_by_xpath(
     '/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[2]/div/div/input').send_keys("nh!234567")
 driver.find_element_by_xpath("/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[4]/button").click()
 # Enter the no of pages on pagination file
-pageno = 11
+pageno = 8
 
 #Name the file
-file = open("a-very-big-sum.csv", "w")
+file = open("cats-and-a-mouse.csv", "w")
 file.write("Name,Time\n")
 for page in range(1, pageno + 1):
     """Enter the link of contests leaderboard below address field"""
 
-    address = 'https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/a-very-big-sum/leaderboard/' + str(
+    address = 'https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/cats-and-a-mouse/leaderboard/' + str(
         page)
 
 
