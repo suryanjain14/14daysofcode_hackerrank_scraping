@@ -13,15 +13,15 @@ driver.find_element_by_xpath(
     '/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[2]/div/div/input').send_keys("nh!234567")
 driver.find_element_by_xpath("/html/body/div[9]/div/div/div/section/div/div/div[2]/div[1]/form/div[4]/button").click()
 # Enter the no of pages on pagination file
-pageno =6
+pageno = 4
 
 # Name the file
-file = open("migratory-birds.csv", "w")
+file = open("bigger-is-greater.csv", "w")
 file.write("Name,Time\n")
 for page in range(1, pageno + 1):
     # Enter the link of contests leaderboard below address field
-    address = 'https://www.hackerrank.com/contests/14daysofcode-beginner/challenges/migratory-birds/leaderboard/' + str(
-        page)
+    address = 'https://www.hackerrank.com/contests/14daysofcode-intermediate/challenges/bigger-is-greater/leaderboard/'\
+              + str(page)
 
     driver.get(url=address)
     driver.implicitly_wait(8)
